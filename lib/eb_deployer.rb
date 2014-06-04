@@ -168,6 +168,12 @@ module EbDeployer
   #   keep.  Older versions are removed and deleted from the S3 source bucket as well.
   #   If specified as zero or not specified, all versions will be kept.  If a
   #   version_prefix is given, only removes version starting with the prefix.
+  #
+  # @options opts [Symbol] :tags. AWS tags to add to the beanstalk environment and all
+  #   resources under it.  All values in this list need to be a hash with the following keys:
+  #
+  #     :key => Key of the AWS tag
+  #     :value => Value of the tag
   def self.deploy(opts)
     if region = opts[:region]
       AWS.config(:region => region)
@@ -200,6 +206,7 @@ module EbDeployer
       env.strategy_name = opts[:strategy] || :blue_green
       env.components = opts[:components]
       env.component_under_deploy = opts[:component]
+      env.tags = opts[:tags] || []
     end
 
     application.create_version(version_label, opts[:package])

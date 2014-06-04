@@ -3,7 +3,7 @@ module EbDeployer
     include Utils
     attr_accessor :creation_opts, :strategy_name
 
-    attr_writer :resource_stacks, :settings, :inactive_settings, :components, :component_under_deploy
+    attr_writer :resource_stacks, :settings, :inactive_settings, :components, :component_under_deploy, :tags
 
     attr_reader :name
 
@@ -14,6 +14,7 @@ module EbDeployer
       @creation_opts = {}
       @settings = []
       @inactive_settings = []
+      @tags = []
       @strategy_name = :blue_green
       yield(self) if block_given?
       unless @components

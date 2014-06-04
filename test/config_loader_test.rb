@@ -173,6 +173,40 @@ YAML
                     'value' => '0'}], config[:inactive_settings])
   end
 
+  def test_set_tags
+    config = @loader.load(generate_input(<<-YAML))
+application: myapp
+common:
+  strategy: inplace-update
+  package_bucket: thoughtworks
+  phoenix_mode: true
+  tags:
+    - key: tag1
+      value: tag1-value
+    - key: tag2
+      value: tag2-value
+  option_settings:
+    - namespace: aws:autoscaling:launchconfiguration
+      option_name: InstanceType
+      value: m1.small
+  resources:
+environments:
+  dev:
+  production:
+    YAML
+    assert_equal('inplace-update', config[:strategy])
+    assert_equal([
+                  {
+                    'key' => 'tag1',
+                    'value' => 'tag1-value'
+                  },
+                  {
+                    'key' => 'tag2',
+                    'value' => 'tag2-value'
+                  }
+                 ], config[:tags])
+  end
+
 
   private
 

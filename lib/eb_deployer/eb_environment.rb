@@ -67,7 +67,7 @@ module EbDeployer
       solution_stack = @creation_opts[:solution_stack]
       validate_solutions_stack(solution_stack)
       with_polling_events(/Successfully launched environment/i) do
-        @bs.create_environment(@app, @name, solution_stack, @creation_opts[:cname_prefix], version_label, @creation_opts[:tier], settings)
+        @bs.create_environment(@app, @name, solution_stack, @creation_opts[:cname_prefix], version_label, @creation_opts[:tier], settings, @creation_opts[:tags])
       end
     end
 

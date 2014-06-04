@@ -40,7 +40,7 @@ module EbDeployer
         alive_envs(app_name).collect { |env| env[:environment_name] }
       end
 
-      def create_environment(app_name, env_name, stack_name, cname_prefix, version, tier, settings)
+      def create_environment(app_name, env_name, stack_name, cname_prefix, version, tier, settings, tags)
         request = {
           :application_name => app_name,
           :environment_name => env_name,
@@ -48,7 +48,8 @@ module EbDeployer
           :version_label => version,
           :option_settings => settings,
           :tier => environment_tier(tier),
-          :cname_prefix => cname_prefix
+          :cname_prefix => cname_prefix,
+          :tags => tags
         }
 
         @client.create_environment(request)

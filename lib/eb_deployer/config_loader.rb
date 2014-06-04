@@ -30,6 +30,8 @@ module EbDeployer
       common_settings = symbolize_keys(config_settings[:common])
       common_settings[:version_label] ||= package_digest
 
+      tags = config_settings[:tags] || []
+
       envs = config_settings[:environments]
       env = options[:environment]
       raise "Environment #{env} is not defined in #{config_file}" unless envs.has_key?(env)
