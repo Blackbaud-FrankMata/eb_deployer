@@ -74,7 +74,12 @@ common:
       end
     end
 
-
+  # Tags that will get applied to all resources in the elastic beanstalk environment.
+  # tags:
+  #   - key: tag-key-1
+  #     value: "key-value-1"
+  #   - key: tag-key-2
+  #     value: "key-value-2"
 
   # Elastic Beanstalk settings that will apply to the environments you are
   # deploying.

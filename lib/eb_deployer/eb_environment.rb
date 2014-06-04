@@ -126,7 +126,8 @@ module EbDeployer
       {
         :solution_stack => "64bit Amazon Linux 2014.02 v1.0.1 running Tomcat 7 Java 7",
         :smoke_test =>  Proc.new {},
-        :tier => 'WebServer'
+        :tier => 'WebServer',
+        :tags => []
       }
     end
 

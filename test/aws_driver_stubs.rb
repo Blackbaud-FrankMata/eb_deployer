@@ -156,6 +156,10 @@ class EBStub
     @envs[env_key(app_name, env_name)][:settings]
   end
 
+  def tags(app_name, env_name)
+    @envs[env_key(app_name, env_name)][:tags]
+  end
+
   def environment_names_for_application(app)
     @envs.inject([]) do |memo, pair|
       key, env = pair
