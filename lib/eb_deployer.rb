@@ -201,12 +201,12 @@ module EbDeployer
         :cname_prefix =>  opts[:cname_prefix],
         :smoke_test => opts[:smoke_test],
         :phoenix_mode => opts[:phoenix_mode],
-        :tier => opts[:tier]
+        :tier => opts[:tier],
+        :tags => opts[:tags] || []
       }
       env.strategy_name = opts[:strategy] || :blue_green
       env.components = opts[:components]
       env.component_under_deploy = opts[:component]
-      env.tags = opts[:tags] || []
     end
 
     application.create_version(version_label, opts[:package])
