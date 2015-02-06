@@ -7,4 +7,4 @@ gem 'redcarpet', :platform => :mri
 gem 'yard'
 gem 'rake'
 
-gem 'aws-sdk', '2.0.21.pre'
+
